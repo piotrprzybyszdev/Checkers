@@ -7,7 +7,6 @@
 #include "Controllers/ComputerController.h"
 #include "Controllers/PlayerController.h"
 #include "Game.h"
-#include "GameConfig.h"
 
 namespace Checkers
 {
@@ -97,7 +96,6 @@ void Game::Run()
 		Position newPosition;
 		Controller *controller;
 		
-		// std::cout << s_Position.Black << ' ' << s_Position.White << ' ' << s_Position.Queens << std::endl;
 		do {
 			if (s_Position.BlackTurn)
 				ChangeBlackPlayer();
@@ -110,8 +108,6 @@ void Game::Run()
 
 			if (s_Finished) return;
 		} while (controller->GetControllerType() != (s_Position.BlackTurn ? s_BlackControllerType : s_WhiteControllerType));
-
-		PrintMove(s_Position, newPosition);
 
 		s_Position = newPosition;
 		Stats::FlushTimers();
